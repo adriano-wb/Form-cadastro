@@ -1,0 +1,2 @@
+  <h4 class="modal-titulo"><img src="assets/images/icon-success-check.svg" style="transform: translateY(4px)" alt=""> Message Sent!</h4>
+  <p class="modal-texto">Thanks for completing the form. We'll be in touch soon!</p>

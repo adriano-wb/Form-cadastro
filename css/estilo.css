@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Cores primárias */
+  --verde-claro: hsl(148, 38%, 91%);
+  --verde-escuro: hsl(169, 82%, 27%);
+  --vermelho: hsl(0, 66%, 54%);
+
+  /* Cores neutras */
+  --branco: hsl(0, 0%, 100%);
+  --cinza-claro: hsl(186, 15%, 59%);
+  --cinza-escuro: hsl(187, 24%, 22%);
+}
+
+body {
+  background-color: var(--verde-claro);
+  /* background: url("../design/success-state.jpg") 0 0 / 100% auto no-repeat; */
+  color: var(--cinza-escuro);
+  font-family: "Karla", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.karla-400 {
+  font-weight: 400;
+}
+
+main {
+  background-color: var(--branco);
+  border-radius: 18px;
+  padding: 25px;
+  margin: 30px 15px;
+}
+
+h1 {
+  letter-spacing: -0.06rem;
+}
+
+/* Formulário nomes e E-mail */
+form {
+  margin-top: 31px;
+}
+
+fieldset {
+  border: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+.prefixo {
+  display: inline-block;
+  margin-left: 5px;
+  color: var(--verde-escuro);
+}
+
+.nomes-flex, .flexbox-query {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nomes-flex__item,
+.flex-query-items {
+  width: 100%;
+}
+
+.nomes-flex__item:first-child {
+  margin-bottom: 28px;
+}
+
+input[name=primeiroNome],
+input[name=ultimoNome],
+input[name=email] {
+  border-radius: 7px;
+  display: block;
+  font-size: 16px;
+  margin-top: 12px;
+  outline: 1px var(--cinza-claro) solid;
+  padding: 15px;
+  width: 100%;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+textarea[name=msg]:focus {
+  outline: 1px solid var(--verde-escuro);
+}
+
+.invalid-input input, .invalid-input textarea {
+  outline: 1px solid var(--vermelho)!important;
+}
+
+.invalid-input span[class^="atencao-"] {
+  display: block;
+}
+
+.email-entrada, .consulta {
+  margin-top: 28px;
+}
+
+/* Consulta radio */
+.flexbox-query {
+  margin-top: 19px;
+}
+
+.flex-query-items {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 14px 25px;
+  border: 1px solid var(--cinza-claro);
+  border-radius: 8px;
+  font-size: 17px;
+  position: relative;
+}
+
+.check-checkbox {
+  cursor: pointer;
+  outline: 1px solid var(--cinza-claro);
+  border-radius: 3px;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  transform: translateY(2px);
+  margin-right: 7px;
+  margin-left: 3px;
+}
+
+.opt {
+  visibility: hidden;
+  position: absolute;
+}
+
+.botao-radio {
+  border-radius: 50%;
+  cursor: pointer;
+  outline: 1px solid var(--cinza-claro);
+  margin-right: 14px;
+  width: 18px;
+  height: 17px;	
+}
+
+.botao-img {
+  display: block;
+  cursor: pointer;
+  transform: scale(1.2);
+  width: 100%;
+  height: 17px;	
+}
+
+.check-img {
+  display: none;
+  width: 100%;
+  height: 18px;	
+  transform: scale(1.1);
+}
+
+.rotulo-query {
+  display: block;
+}
+
+.ativado {
+  border-color: var(--verde-escuro);
+  background-color: var(--verde-claro);
+}
+
+label[for="queryOpc1"],
+label[for="queryOpc2"] {
+  letter-spacing: 0.03rem;
+}
+
+.flex-query-items:first-child {
+  margin-bottom: 16px;
+}
+
+.flex-query-items:last-child {
+  margin-bottom: -2px;
+}
+
+/* Mensagem */
+.mensagem {
+  margin-top: 29px;
+}
+
+textarea[name=msg] {
+  outline: 1px var(--cinza-claro) solid;
+  font-family: "Karla", serif;
+  border-radius: 7px;
+  background: transparent;
+  padding: 16px;
+  margin-top: 12px;
+  display: block;
+  font-size: 18px;	
+  line-height: 1.3;
+  resize: none;
+  width: 100%;
+  height: 237px;
+}
+
+/* Checkbox */
+.conceder {
+  margin-top: 43px;
+  align-items: center;
+}
+
+.conceder > div {
+  display: flex;
+  align-items: center;
+}
+
+.autorizar-check {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+label[for=autorizar] {
+  line-height: 1.1;
+}
+
+/* Botão de enviar */
+input[type="submit"] {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  margin-top: 41px;
+  color: var(--branco);
+  background: var(--verde-escuro);
+  padding: 20px;
+  border-radius: 7px;
+  letter-spacing: 0.05rem;
+  transition: .2s;
+}
+
+input[type="submit"]:hover {
+  background: #063F36;
+}
+
+/* Modal */
+.modal {
+  color: var(--branco);
+  background: #063F36;
+  padding: 20px 22px;
+  line-height: 2.0;
+  position: fixed;
+  border-radius: 11px;
+  top: 23px;
+  left: 0;
+  right: 0;
+  margin: 0 13px;
+  transition: 1s linear;
+}
+
+.modal-anim {
+  animation: fadeModal 3s linear forwards;
+}
+
+@keyframes fadeModal {
+  0% {
+    opacity: 0;
+  }
+  
+  30% {
+    opacity: 1;
+  }
+  
+  50% {
+    opacity: 1;
+  }
+  
+  70% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+
+.modal-titulo {
+  font-size: 18px;
+}
+
+.modal-texto {
+  font-size: 17px;
+}
+
+/* Classes de mensagens de falhas na entrada */
+.atencao-nome-vazio,
+.atencao-sobreNome-vazio,
+.atencao-email-invalido,
+.atencao-selecionar-tipo-de-consulta,
+.atencao-campo-msg-vazio,
+.atencao-check {
+  /* display: block; */
+  display: none;
+  color: var(--vermelho);
+  margin-top: 11px;
+}
+
+.atencao-selecionar-tipo-de-consulta {
+  margin-top: 19px;
+}
+  
+.attribution { 
+  color: var(--cinza-escuro);
+  padding: 10px;
+  font-size: 11px; 
+  text-align: center; 
+}
+.attribution a { 
+  color: #333; 
+}
+
+/* Informações de estilo para desktop */
+@media screen and (min-width: 376px) {
+  main {	
+    width: 81%;
+    margin: 127px auto;
+    padding: 39px;
+  }
+  
+  input[name=primeiroNome],
+  input[name=ultimoNome],
+  input[name=email] {
+    margin-top: 11px;
+    font-size: 18px;
+    padding: 16px;
+  }
+
+  .email-entrada, .consulta {
+    margin-top: 29px;
+  }
+  
+  .conceder {
+    display: block;	  
+  }
+  
+  textarea[name=msg] { 
+    height: 103px;
+  }
+  
+  input[type="submit"] {
+    margin-top: 45px;	
+	padding: 19px;
+    font-weight: 700;
+  }
+
+  .email-entrada {
+    margin-top: 25px;
+  }
+  
+  .consulta {
+    margin-top: 23px;
+  }
+  
+  
+  .conceder {
+    margin-top: 40px;
+  }
+  
+  
+  label[for=autorizar] {
+	font-size: 18px;
+    letter-spacing: 0.02rem;
+  }
+  
+  .modal {
+    width: 84%;	 
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  main {
+    max-width: 51%;
+  }
+  
+  .modal {
+    position: absolute;
+    width: 34%;	 
+  }
+
+  .nomes-flex__item:first-child {
+    margin: 0;
+  }
+  
+  .nomes-flex, .flexbox-query {
+    flex-wrap: nowrap;
+  }
+
+  .nomes-flex__item:first-child,
+  .flex-query-items:first-child {
+    margin-right: 18px!important;
+  }
+
+  .flex-query-items:first-child {
+    margin-bottom: 0;
+  }
+
+  .flex-query-items:last-child {
+    margin-bottom: 0;
+  }
+}

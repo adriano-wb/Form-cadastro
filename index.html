@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+    <title>Frontend Mentor | Contact form</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+	  
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Contact Us</h1>
+	  
+      <form action="" method="POST" id="cadastroUsuario" novalidate>
+	  
+	    <!-- Informações de identificação do usuário -->
+	    <fieldset>
+		  <div class="nomes-flex">
+		    <!-- Campo de entrada "nome" -->
+		    <div class="nomes-flex__item">
+              <label for="nome">First Name <span class="prefixo">*</span></label>
+              <input type="text" id="nome" name="primeiroNome" maxlength="15" required>
+			  <span class="atencao-nome-vazio">This field is required</span>
+            </div>
+			
+			<!-- Campo de entrada "sobre nome" -->
+		    <div class="nomes-flex__item">
+              <label for="sobreNome">Last Name <span class="prefixo">*</span></label>
+              <input type="text" id="sobreNome" name="ultimoNome" maxlength="15" required>
+			  <span class="atencao-sobreNome-vazio">This field is required</span>
+	        </div>
+		  </div>
+		  
+		  <!-- Campo de entrada de E-mail -->
+		  <div class="email-entrada">
+		    <label for="email">Email Address <span class="prefixo">*</span></label>
+			<input type="email" name="email" id="email" maxlength="50" required>
+			<span class="atencao-email-invalido">Please enter a valid email address</span>
+		  </div>
+		</fieldset>
+		
+		<!-- Opções de tipos de consultas -->
+		<fieldset class="consulta">
+          <legend>Query Type <span class="prefixo">*</span></legend>
+		  <div class="flexbox-query">
+		  
+		    <div class="flex-query-items">
+              <label for="queryOpc1">
+			    <input type="radio" name="query" class="opt" id="queryOpc1">
+				
+				<div class="botao-radio">
+				  <img src="assets/images/icon-radio-selected.svg" alt="" class="botao-img">
+				</div>
+			  </label>
+			  <label for="queryOpc1" class="rotulo-query">General Enquiry</label>
+			</div>
+			
+			<div class="flex-query-items">
+              <label for="queryOpc2">
+			    <input type="radio" name="query" class="opt" id="queryOpc2">
+				
+				<div class="botao-radio" id="check-circ1">
+				  <img src="assets/images/icon-radio-selected.svg" alt="" class="botao-img">
+				</div>
+			  </label>
+			  <label for="queryOpc2" class="rotulo-query">Support Request</label>
+			</div>
+			
+		  </div>
+          <span class="atencao-selecionar-tipo-de-consulta">Please select a query type</span>
+        </fieldset>
+		
+		<!-- Campo de envio de mensagem personalizada -->
+		<fieldset class="mensagem">
+          <label for="mensagem">Message <span class="prefixo">*</span></label>
+		  <textarea name="msg" id="mensagem" rows="3" required></textarea>
+          <span class="atencao-campo-msg-vazio">This field is required</span>
+        </fieldset>
+		
+		<div class="conceder">
+		  <div>
+            <label for="autorizar" class="autorizar-check">
+		      <input type="checkbox" name="autorizo" id="autorizar" style="display:none" required>
+		      <div class="check-checkbox">
+				<img src="assets/images/icon-checkbox-check.svg" alt="" class="check-img">
+			  </div>
+		    </label>&nbsp;&nbsp;<label for="autorizar">I consent to being contacted by the team *</label>
+		  </div>
+          <span class="atencao-check">To submit this form, please consent to being contacted</span>
+        </div> 
+		
+        <input type="submit" class="botao-envio" value="Submit">
+      </form>
+	  
+	  
+    </main>
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+      Coded by <a href="#">Adriano José</a>.
+    </footer>
+	
+	<!-- <script type="module" src="./js/meuApp.js"></script> -->
+	
+	<script>
+	  const botaoRadio = document.getElementsByClassName("botao-radio");
+	  const botaoCheckbox = document.querySelector(".check-checkbox");
+	  const checboxImg = document.querySelector(".check-img");
+	  const botaoRadioImg = document.getElementsByClassName("botao-img");
+	  const rotuloQ = document.getElementsByClassName("rotulo-query");
+	  const rotuloCheckbox = document.querySelector("label[for='autorizar']");
+	  
+	  const inputNome = document.getElementById("nome");
+	  const inputSobreNome = document.getElementById("sobreNome");
+	  const inputEmail = document.getElementById("email");
+	  const inputRadio = document.getElementsByClassName("opt");
+	  const inputCheck = document.getElementById("autorizar");
+	  const textareaMsg = document.getElementById("mensagem");
+	  const form = document.getElementById("cadastroUsuario");
+	  const regExpEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+	  
+	  // Resetar botão do campo de entrada type="radio"
+	  function resetarRadio() {
+	    for (let i = 0; i < botaoRadioImg.length; i++) {
+	      botaoRadioImg[i].style.display = "none";
+		  inputRadio[i].parentNode.parentNode.classList.remove("ativado");
+	    }
+	  }
+	  resetarRadio();
+	  
+	  // função para ativar o botão do campo de entrada type="radio"
+	  function checkQuery(n) {
+	    resetarRadio();
+	    if (botaoRadioImg[n].style.display === "none") {
+		  inputRadio[n].checked = true;
+		  botaoRadioImg[n].style.display = "block";
+		  inputRadio[n].parentNode.parentNode.classList.add("ativado");
+		} else {
+		  inputRadio[n].checked = false;
+		  botaoRadioImg[n].style.display = "none";
+		  inputRadio[n].parentNode.parentNode.classList.remove("ativado");
+		}
+	  }
+	  
+	  // função para ativar o botão do campo de entrada type="checkbox"
+	  function checkCheckbox() {
+	    if (checboxImg.style.display !== "block") {
+		  checboxImg.style.display = "block";
+		  inputCheck.checked = true;
+		} else {
+		  checboxImg.style.display = "none";
+		  inputCheck.checked = false;
+		}
+	  }
+	  
+	  
+	  /* -----------------
+	               VALIDAÇÃO 
+      	 -------------------------- */
+		 
+	  function envioFormSimulacao() {
+		fetch("mensagem.txt").then((response) => {
+          if (!response.ok) {
+            throw new Error("Erro na requisição.");
+          }
+          return response.text(); // Obter o texto da resposta
+        })
+        .then((html) => {
+		  const newElement = document.createElement("div");
+		  newElement.innerHTML = html;
+		  newElement.className = "modal modal-anim";
+		  
+          // Exibir a mensagem no HTML
+          form.insertAdjacentElement("afterend", newElement);
+		  
+		  inputNome.value = "";
+	      inputSobreNome.value = "";
+	      inputEmail.value = "";
+	      textareaMsg.value = "";
+	      inputRadio[0].checked = false;
+	      inputRadio[1].checked = false;
+	      inputCheck.checked = false;
+		  checboxImg.style.display = "none";
+		  resetarRadio();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+	  }
+		 
+	  function validacao(input, e, tudoCerto) {
+	  
+		// Se campos estiverem vazios
+        if (!input.value) {
+		  input.parentNode.classList.add("invalid-input");
+		  tudoCerto = false;
+		} else {
+		  input.parentNode.classList.remove("invalid-input");
+		  tudoCerto = true;
+		}
+		  
+		// Se for E-Mail
+		if (input === inputEmail) {
+		  if (!regExpEmail.test(input.value)) {
+		    input.parentNode.classList.add("invalid-input");
+		    tudoCerto = false;
+		  } else {
+		    input.parentNode.classList.remove("invalid-input");
+		    tudoCerto = true;
+		  }
+		}
+      }	  
+	  
+	  function validacaoRadio(radios, e) {
+		if (!(radios[0].checked || radios[1].checked)) {
+		  radios[0].parentNode.parentNode.parentNode.parentNode.lastElementChild.style.display = "block";
+		} else {
+		  radios[0].parentNode.parentNode.parentNode.parentNode.lastElementChild.style.display = "none";
+		}
+	  }
+	  
+	  function validacaoCheckbox(checks, e) {
+	    if (!checks.checked) {
+		  checks.parentNode.parentNode.parentNode.lastElementChild.style.display = "block";
+		} else {
+		  checks.parentNode.parentNode.parentNode.lastElementChild.style.display = "none";
+		}
+	  }
+	
+      form.addEventListener("submit", (event) => {
+		event.preventDefault();
+		
+		if (inputNome.value &&
+		    inputSobreNome.value &&
+			inputEmail.value &&
+			regExpEmail.test(inputEmail.value) &&
+			textareaMsg.value &&
+			(inputRadio[0].checked ||
+			inputRadio[1].checked) &&
+			inputCheck.checked) {
+		  envioFormSimulacao();
+		}
+		
+	    // Validação do campo de nome
+	    validacao(inputNome, event);
+		
+		// Validação do campo de sobre nome
+	    validacao(inputSobreNome, event);
+		
+		// Validação do campo de E-Mail
+	    validacao(inputEmail, event);
+		
+		// Validação do campo de Msg
+	    validacao(textareaMsg, event);
+		
+		
+	    validacaoRadio(inputRadio, event);
+		
+		validacaoCheckbox(inputCheck, event);
+	  })
+      
+	  // Após envio e campos vazios quando o usuário digitar novamente
+	  // os efeitos de borda vermelha e mensagem de campo inválido irão desaparecer
+	  function removerCSSInputInvalidoAoDigitar(input, pai) {
+	    if (input.value) {
+		  input.parentNode.classList.remove("invalid-input");
+		}
+	  }
+	  
+      inputNome.addEventListener("input", () => removerCSSInputInvalidoAoDigitar(inputNome));
+      inputSobreNome.addEventListener("input", () => removerCSSInputInvalidoAoDigitar(inputSobreNome));
+      inputEmail.addEventListener("input", () => removerCSSInputInvalidoAoDigitar(inputEmail));
+      textareaMsg.addEventListener("input", () => removerCSSInputInvalidoAoDigitar(textareaMsg));
+	  
+	  inputRadio[0].parentNode.parentNode.parentNode.addEventListener("click", () => {
+		inputRadio[0].parentNode.parentNode.parentNode.parentNode.lastElementChild.style.display = "none";
+	  });
+			
+      inputCheck.addEventListener("click", () => {
+		inputCheck.parentNode.parentNode.parentNode.lastElementChild.style.display = "none";
+      });	  
+	  
+	  botaoRadio[0].parentNode.parentNode.addEventListener("click", () => checkQuery(0));
+	  botaoRadio[1].parentNode.parentNode.addEventListener("click", () => checkQuery(1));
+	  rotuloQ[0].addEventListener("click", () => checkQuery(0));
+	  rotuloQ[1].addEventListener("click", () => checkQuery(1));
+	  botaoCheckbox.addEventListener("click", () => checkCheckbox());
+	  rotuloCheckbox.addEventListener("click", () => checkCheckbox());
+	</script>
+  </body>
+</html>
